@@ -18,6 +18,9 @@ from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 env = SmartRoomEnvironment()
+import logging
+logger = logging.getLogger("uvicorn.error")
+logger.info("Starting Smart Room FastAPI app")
 
 class ActionRequest(BaseModel):
     action: int
@@ -288,6 +291,17 @@ def ai_step():
 @app.get("/state")
 def get_state():
     return env._get_obs(0.0, False, 0).model_dump()
+
+
+@app.get("/health")
+def health_check():
+    """Simple health endpoint for deployments and monitoring."""
+    return {"status": "ok", "service": "SmartRoomAutomation"}
+
+
+@app.get('/favicon.ico')
+def favicon():
+    return HTMLResponse(content='', status_code=204)
 
 @app.post("/manual_step")
 def manual_step(req: ActionRequest):
