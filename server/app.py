@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from environment import SmartRoomEnvironment, SmartRoomAction
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 
 app = FastAPI()
 env = SmartRoomEnvironment()
@@ -302,6 +302,12 @@ def health_check():
 @app.get('/favicon.ico')
 def favicon():
     return HTMLResponse(content='', status_code=204)
+
+
+@app.get('/web')
+def web_root():
+    """Hugging Face Spaces requests /web — redirect to root dashboard."""
+    return RedirectResponse(url='/')
 
 @app.post("/manual_step")
 def manual_step(req: ActionRequest):
