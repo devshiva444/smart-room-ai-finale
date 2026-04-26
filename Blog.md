@@ -24,7 +24,6 @@ Training this agent for **5000 episodes** was a rollercoaster.
 | 5000 | +29.76 | **Stable Recovery** |
 
 ## 🎥 Video Demo
-[[YOUTUBE LINK](https://youtu.be/zgw5JvdPbjw)]
-
+[Watch Demo on YouTube](https://youtu.be/zgw5JvdPbjw)
 ---
 **Author:** Shivraj Selar - Final Year CSE Student.

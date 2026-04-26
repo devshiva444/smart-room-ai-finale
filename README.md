@@ -12,7 +12,7 @@ pinned: true
 **An OpenEnv RL + LLM Hybrid — Meta x Scaler OpenEnv Hackathon 2026**
 
 ## Quick demo
-Add your unlisted demo link here (2 minutes): [[YOUTUBE LINK](https://youtu.be/zgw5JvdPbjw)]
+[Watch Demo on YouTube](https://youtu.be/zgw5JvdPbjw)
 
 ---
 
