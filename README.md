@@ -1,6 +1,6 @@
 ---
 title: Multi-Agent Smart Room System - OpenEnv
-emoji: 🏠
+emoji: house
 colorFrom: blue
 colorTo: indigo
 sdk: docker
@@ -8,8 +8,8 @@ app_file: app.py
 pinned: true
 ---
 
-# 🤖 3-Layer Multi-Agent Smart Room System
-**An OpenEnv RL + LLM Hybrid — Meta x Scaler OpenEnv Hackathon 2026**
+# 3-Layer Multi-Agent Smart Room System
+**An OpenEnv RL + LLM Hybrid - Meta x Scaler OpenEnv Hackathon 2026**
 
 ## Quick demo
 [Watch Demo on YouTube](https://youtu.be/zgw5JvdPbjw)
@@ -17,7 +17,7 @@ pinned: true
 ---
 
 ## What this project does (short)
-- Learns to control room devices (lights, fan, AC) from a 7‑dim state vector.
+- Learns to control room devices (lights, fan, AC) from a 7-dim state vector.
 - Optimizes for human comfort while minimizing energy use and enforcing safety rules.
 - Uses a 3-layer pipeline: a DQN proposes actions, an LLM reviews/adjusts them, and a safety engine enforces hard constraints.
 
@@ -25,7 +25,7 @@ pinned: true
 
 ## Key Features
 - Multi-Agent 3-layer control: `RL Worker` + `LLM Supervisor` + `Safety Engine`.
-- Trained DQN (7 → 128 → 128 → 9) with 5000 episodes of curriculum learning.
+- Trained DQN (7 -> 128 -> 128 -> 9) with 5000 episodes of curriculum learning.
 - Human-readable training evidence in `Training_Evidence.ipynb` (V-shaped learning + recovery).
 - FastAPI dashboard for live simulation and evaluation (`/grader`, `/state`, `/ai_step`).
 - Docker-ready for Hugging Face Spaces (port 7860).
