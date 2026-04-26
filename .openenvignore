@@ -1,0 +1,7 @@
+# Ignore large/binary artifacts that can break packaging/encoding
+*.pth
+.venv/
+venv/
+__pycache__/
+*.egg-info/
+outputs/

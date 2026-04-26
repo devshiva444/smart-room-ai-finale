@@ -8,9 +8,16 @@ from pathlib import Path
 
 
 def load_model_path():
-    """Return the path to the trained model file if present, else None."""
-    p = Path(__file__).parent / "smart_room_ai_final.pth"
-    return str(p) if p.exists() else None
+    """Return the path to the trained model file if present, else None.
+
+    Prefer model in `outputs/` (recommended). Fall back to project root.
+    """
+    base = Path(__file__).parent
+    candidates = [base / "outputs" / "smart_room_ai_final.pth", base / "smart_room_ai_final.pth"]
+    for p in candidates:
+        if p.exists():
+            return str(p)
+    return None
 
 
 def model_info():
