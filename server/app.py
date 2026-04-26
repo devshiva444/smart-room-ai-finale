@@ -15,9 +15,15 @@ load_dotenv()
 
 from environment import SmartRoomEnvironment, SmartRoomAction
 from fastapi.responses import HTMLResponse, RedirectResponse
+from core.multi_agent import RLWorker
 
 app = FastAPI()
 env = SmartRoomEnvironment()
+# RL worker (loads DQN weights) - lazy init
+try:
+    rl_worker = RLWorker()
+except Exception:
+    rl_worker = None
 import logging
 logger = logging.getLogger("uvicorn.error")
 logger.info("Starting Smart Room FastAPI app")
@@ -280,13 +286,26 @@ def get_metrics():
 @app.post("/ai_step")
 def ai_step():
     """Lets the trained AI take 1 step specifically for the Dashboard"""
-    obs_dict = env._get_obs(0.0, False, 0).__dict__
+    obs = env._get_obs(0.0, False, 0)
+    obs_dict = obs.__dict__.copy()
+    # 1) RL proposes an action
+    if rl_worker is not None:
+        try:
+            rl_action = rl_worker.propose_action(obs_dict)
+        except Exception:
+            rl_action = 0
+    else:
+        rl_action = 0
+    obs_dict['rl_proposed_action'] = int(rl_action)
+
+    # 2) LLM planner reviews RL proposal (falls back to RL if client missing)
     from core.llm_planner import get_llm_planner
     planner = get_llm_planner()
-    # Execute AI Planner (Will use trained DQN if LLM Token is missing)
-    action, _, _ = planner.plan_action(obs_dict, use_fallback=True) 
-    obs = env.step(SmartRoomAction(action=action))
-    return obs.model_dump()
+    final_action, source, info = planner.plan_action(obs_dict, use_fallback=False)
+
+    # 3) Execute final action
+    obs2 = env.step(SmartRoomAction(action=final_action))
+    return obs2.model_dump()
 
 @app.get("/state")
 def get_state():
