@@ -1,6 +1,5 @@
 ---
 title: Multi-Agent Smart Room System - OpenEnv
-emoji: house
 colorFrom: blue
 colorTo: indigo
 sdk: docker
