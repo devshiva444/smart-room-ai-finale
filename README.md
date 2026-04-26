@@ -88,7 +88,7 @@ Architecture summary:
 
 ```bash
 python -m venv .venv
-source .venv/Scripts/activate   # Windows PowerShell: .venv\\Scripts\\Activate.ps1
+source .venv/Scripts/activate  
 pip install -r requirements.txt
 ```
 
@@ -105,7 +105,6 @@ python app.py
 python inference.py
 ```
 
-4. Optional: build Docker (for Hugging Face Spaces):
 
 ```bash
 docker build -t smart-room-ai .
@@ -130,6 +129,7 @@ Open `Training_Evidence.ipynb` and run the cell labeled "Energy Comparison" — 
 
 ## Author
 Shivraj Selar — Final-year CSE Student. Meta x Scaler OpenEnv Hackathon 2026.
-
+GitHub: https://github.com/devshiva444/smart-room-ai-finale
+YouTube: Link https://youtu.be/zgw5JvdPbjw
 ---
 
