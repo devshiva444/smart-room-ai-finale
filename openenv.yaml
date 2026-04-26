@@ -1,5 +1,5 @@
 id: smart-room-automation
-name: "Smart Room Automation - Multi-Agent RL System"
+name: "SmartRoomAutomation"
 version: 2.0.0
 description: "Hackathon-ready adaptive smart room with LLM planner, action supervisor, and physics simulation"
 
@@ -200,6 +200,7 @@ compatibility:
   openenv_version: ">=0.2.0"
   python_version: ">=3.8"
   framework: "PyTorch"
+  observation_schema:
     temperature: { type: float }
     light_on: { type: boolean }
     fan_speed: { type: integer }
